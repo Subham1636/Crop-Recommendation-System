@@ -12,10 +12,12 @@
         box-shadow: 0 10px 25px rgba(26,77,36,.09);
         transition: .25s;
     }
+
     .help-card:hover {
         transform: translateY(-4px);
         box-shadow: 0 15px 30px rgba(26,77,36,.15);
     }
+
     .help-icon {
         width: 52px;
         height: 52px;
@@ -28,10 +30,12 @@
         font-size: 25px;
         margin-bottom: 15px;
     }
+
     .help-heading { color: #18783a; font-weight: 800; }
     .help-card h5 { color: #18783a; font-weight: 700; }
     .help-card p, .help-card li { color: #526458; font-size: 14px; }
     .help-card li { margin-bottom: 8px; }
+
     .faq-item {
         background: #f5faf4;
         border: 1px solid #dcebd9;
@@ -39,7 +43,9 @@
         padding: 16px;
         margin-bottom: 12px;
     }
+
     .faq-item strong { color: #18783a; }
+
     @media(max-width:576px) {
         .help-wrapper { padding: 20px 12px !important; }
     }
@@ -231,7 +237,9 @@
                     कृषि संबंधी सरकारी जानकारी और सेवाओं के लिए
                     आधिकारिक किसान पोर्टल देखें:
                 </p>
-                <a href="https://farmer.gov.in/" target="_blank" rel="noopener noreferrer"
+                <a href="https://www.mkisan.gov.in/"
+                   target="_blank"
+                   rel="noopener noreferrer"
                    class="btn btn-outline-success">
                     <i class="bi bi-box-arrow-up-right"></i>
                     Visit Farmer Portal
@@ -243,9 +251,11 @@
                 <a href="{% url 'crop_recommendation' %}" class="btn btn-success px-4">
                     <i class="bi bi-magic"></i> Predict Crop
                 </a>
+
                 <a href="{% url 'crop_info' %}" class="btn btn-outline-success px-4">
                     <i class="bi bi-book"></i> Crop Information
                 </a>
+
                 <a href="{% url 'dashboard' %}" class="btn btn-outline-success px-4">
                     <i class="bi bi-house"></i> Dashboard
                 </a>
