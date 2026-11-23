@@ -1,0 +1,576 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Farmer Dashboard | Crop Recommendation System</title>
+
+    <!-- Bootstrap 5 -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+
+    <!-- Bootstrap Icons -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+
+    <!-- Google Font (Poppins) -->
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+
+    <style>
+        :root {
+            --green: #18783a;
+            --dark-green: #104d2c;
+            --light-green: #eaf6e9;
+            --text: #263c2e;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: 'Poppins', sans-serif;
+            color: var(--text);
+            background: #f7fbf5;
+        }
+
+        a {
+            text-decoration: none;
+        }
+
+        /* NAVBAR */
+        .navbar {
+            background: rgba(255, 255, 255, .97);
+            padding: 14px 0;
+            box-shadow: 0 3px 18px rgba(0, 0, 0, .07);
+        }
+
+        .navbar-brand {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            color: var(--dark-green);
+            font-size: 20px;
+            font-weight: 800;
+        }
+
+        .brand-icon {
+            font-size: 34px;
+            color: var(--green);
+        }
+
+        .brand-subtitle {
+            display: block;
+            font-size: 10px;
+            color: #6d7c70;
+            font-weight: 400;
+            letter-spacing: .5px;
+        }
+
+        .nav-link {
+            color: #34473a;
+            font-weight: 500;
+            font-size: 14px;
+            margin: 0 5px;
+            transition: .3s;
+        }
+
+        .nav-link:hover, .nav-link.active {
+            color: var(--green);
+        }
+
+        .nav-logout {
+            border: 1px solid #dc3545;
+            color: #dc3545 !important;
+            border-radius: 9px;
+            padding: 8px 18px !important;
+            font-weight: 600;
+        }
+
+        .nav-logout:hover {
+            background: #dc3545;
+            color: white !important;
+        }
+
+        .lang-select {
+            border: 1px solid #cbe3cd;
+            border-radius: 8px;
+            padding: 5px 10px;
+            font-size: 12px;
+            color: var(--dark-green);
+            background-color: #f2f9f1;
+            font-weight: 600;
+        }
+
+        /* DASHBOARD HERO SCENE */
+        .dashboard-hero {
+            position: relative;
+            isolation: isolate;
+            overflow: hidden;
+            min-height: 280px;
+            display: flex;
+            align-items: center;
+            background: linear-gradient(
+                180deg,
+                #8dd7f4 0%,
+                #e3f7fa 45%,
+                #bce5a0 75%,
+                #5aab49 100%
+            );
+            padding: 40px 0;
+        }
+
+        .hero-content {
+            position: relative;
+            z-index: 5;
+        }
+
+        .welcome-badge {
+            display: inline-block;
+            padding: 6px 14px;
+            background: rgba(255, 255, 255, 0.9);
+            border-radius: 30px;
+            color: var(--green);
+            font-size: 12px;
+            font-weight: 700;
+            margin-bottom: 12px;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+        }
+
+        .dashboard-hero h1 {
+            font-size: clamp(26px, 4vw, 40px);
+            font-weight: 800;
+            color: #154d2b;
+        }
+
+        /* VECTOR ANIMATED ELEMENTS */
+        .sun {
+            position: absolute;
+            right: 8%;
+            top: 35px;
+            height: 70px;
+            width: 70px;
+            border-radius: 50%;
+            background: #ffe58a;
+            box-shadow: 0 0 35px rgba(255, 222, 112, .8);
+            animation: sunPulse 4s infinite alternate;
+            z-index: 1;
+        }
+
+        .cloud {
+            position: absolute;
+            height: 28px;
+            width: 85px;
+            border-radius: 30px;
+            background: rgba(255, 255, 255, .9);
+            animation: cloudFloat 8s ease-in-out infinite alternate;
+            z-index: 1;
+        }
+
+        .cloud::before, .cloud::after {
+            content: "";
+            position: absolute;
+            background: inherit;
+            border-radius: 50%;
+        }
+
+        .cloud::before {
+            width: 36px;
+            height: 36px;
+            left: 12px;
+            top: -18px;
+        }
+
+        .cloud::after {
+            width: 44px;
+            height: 44px;
+            right: 10px;
+            top: -22px;
+        }
+
+        .cloud-one { top: 40px; left: 40%; }
+
+        .cloud-two {
+            top: 110px;
+            right: 25%;
+            transform: scale(.7);
+            animation-delay: -4s;
+        }
+
+        @keyframes sunPulse {
+            to { transform: scale(1.08); }
+        }
+
+        @keyframes cloudFloat {
+            to { translate: 25px 0; }
+        }
+
+        .field {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            height: 60px;
+            background: linear-gradient(#5aab49, #347c33);
+            z-index: 1;
+        }
+
+        /* MAIN DASHBOARD CARDS */
+        .section {
+            padding: 55px 0 80px;
+        }
+
+        .dash-card {
+            background: white;
+            border-radius: 20px;
+            border: 1px solid #e2eee1;
+            padding: 30px 24px;
+            height: 100%;
+            transition: all 0.3s ease;
+            box-shadow: 0 8px 24px rgba(24, 120, 58, 0.04);
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .dash-card:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 16px 38px rgba(24, 120, 58, 0.12);
+            border-color: #3ba64f;
+        }
+
+        .dash-card::before {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 6px;
+            background: var(--green);
+        }
+
+        .card-icon {
+            width: 65px;
+            height: 65px;
+            border-radius: 18px;
+            background: var(--light-green);
+            color: var(--green);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 32px;
+            margin-bottom: 20px;
+        }
+
+        .dash-card h4 {
+            font-size: 19px;
+            font-weight: 700;
+            color: #194e2c;
+            margin-bottom: 10px;
+        }
+
+        .dash-card p {
+            font-size: 13px;
+            color: #66786a;
+            line-height: 1.7;
+            margin-bottom: 22px;
+        }
+
+        .btn-card {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+            width: 100%;
+            padding: 12px;
+            border-radius: 10px;
+            background: var(--light-green);
+            color: var(--green);
+            font-weight: 700;
+            font-size: 13px;
+            transition: 0.3s;
+        }
+
+        .dash-card:hover .btn-card {
+            background: var(--green);
+            color: white;
+        }
+
+        /* QUICK STATS WIDGET */
+        .info-box {
+            background: white;
+            border-radius: 16px;
+            padding: 20px;
+            border: 1px solid #e5eee4;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.02);
+        }
+
+        .info-box i {
+            font-size: 24px;
+            color: var(--green);
+        }
+
+        /* FOOTER */
+        footer {
+            background: #103d27;
+            color: #c1d8c8;
+            padding: 25px 0;
+            font-size: 12px;
+            text-align: center;
+        }
+
+        @media (max-width: 767px) {
+            .dashboard-hero {
+                min-height: 220px;
+            }
+
+            .sun {
+                right: 4%;
+                top: 20px;
+                width: 50px;
+                height: 50px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+<!-- NAVBAR -->
+<nav class="navbar navbar-expand-lg sticky-top">
+    <div class="container">
+
+        <a class="navbar-brand" href="{% url 'dashboard' %}">
+            <i class="bi bi-flower1 brand-icon"></i>
+            <span>
+                Crop Recommendation System
+                <span class="brand-subtitle">Smart Farming | Kisan Portal</span>
+            </span>
+        </a>
+
+        <button class="navbar-toggler" type="button"
+                data-bs-toggle="collapse"
+                data-bs-target="#dashNavbar">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+
+        <div class="collapse navbar-collapse" id="dashNavbar">
+            <div class="ms-auto d-flex align-items-center gap-3 mt-3 mt-lg-0">
+
+                <!-- Language Selector -->
+                <div class="d-flex align-items-center gap-1">
+                    <i class="bi bi-translate text-success"></i>
+                    <select class="lang-select" aria-label="Select Language">
+                        <option value="hi" selected>हिंदी (Hindi)</option>
+                        <option value="en">English</option>
+                    </select>
+                </div>
+
+                <!-- Dynamic Profile Info -->
+                <span class="fw-semibold text-success small">
+                    <i class="bi bi-person-circle fs-6 me-1"></i>
+                    {% if request.user.is_authenticated %}
+                        राम-राम, {{ request.user.first_name|default:request.user.username }}!
+                    {% else %}
+                        राम-राम, किसान भाई!
+                    {% endif %}
+                </span>
+
+                <!-- Logout Link -->
+                <a href="{% url 'logout' %}" class="nav-link nav-logout">
+                    <i class="bi bi-box-arrow-right"></i> Logout
+                </a>
+
+            </div>
+        </div>
+    </div>
+</nav>
+
+<!-- HERO SECTION WITH VILLAGE SCENE -->
+<section class="dashboard-hero">
+
+    <div class="sun"></div>
+    <div class="cloud cloud-one"></div>
+    <div class="cloud cloud-two"></div>
+    <div class="field"></div>
+
+    <div class="container hero-content">
+        <div class="row align-items-center">
+            <div class="col-md-8">
+
+                <span class="welcome-badge">
+                    <i class="bi bi-geo-alt-fill text-danger"></i>
+                    उत्तर प्रदेश (U.P. Farmer Portal)
+                </span>
+
+                <h1>किसान डैशबोर्ड (Dashboard)</h1>
+
+                <p class="text-success-emphasis fw-medium mb-0">
+                    अपनी मिट्टी की जानकारी दर्ज करें और AI/Machine Learning से सही फसल का सुझाव पाएं।
+                </p>
+
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- MAIN DASHBOARD CONTENT -->
+<section class="section">
+    <div class="container">
+
+        <!-- Quick Summary Bar -->
+        <div class="row g-3 mb-5">
+
+            <div class="col-6 col-md-3">
+                <div class="info-box d-flex align-items-center gap-3">
+                    <i class="bi bi-cpu-fill"></i>
+                    <div>
+                        <h6 class="mb-0 fw-bold text-dark">5 ML Models</h6>
+                        <small class="text-muted">AI Prediction Ready</small>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-6 col-md-3">
+                <div class="info-box d-flex align-items-center gap-3">
+                    <i class="bi bi-cloud-sun-fill"></i>
+                    <div>
+                        <h6 class="mb-0 fw-bold text-dark">मौसम (Weather)</h6>
+                        <small class="text-muted">28°C · सामान्य</small>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-6 col-md-3">
+                <div class="info-box d-flex align-items-center gap-3">
+                    <i class="bi bi-droplet-half"></i>
+                    <div>
+                        <h6 class="mb-0 fw-bold text-dark">मिट्टी की जांच</h6>
+                        <small class="text-muted">N-P-K & pH Level</small>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-6 col-md-3">
+                <div class="info-box d-flex align-items-center gap-3">
+                    <i class="bi bi-shield-check text-success"></i>
+                    <div>
+                        <h6 class="mb-0 fw-bold text-dark">खाता स्थिति</h6>
+                        <small class="text-success fw-semibold">Active Profile</small>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+
+        <!-- 4 MAIN CARDS -->
+        <div class="row g-4">
+
+            <!-- 1. Crop Recommendation -->
+            <div class="col-md-6 col-lg-3">
+                <div class="dash-card">
+                    <div>
+                        <div class="card-icon">
+                            <i class="bi bi-magic"></i>
+                        </div>
+
+                        <h4>फसल की सलाह (Crop Recommendation)</h4>
+
+                        <p>
+                            अपनी मिट्टी के N, P, K और मौसम के मापदंड भरकर AI से सही फसल जानें।
+                        </p>
+                    </div>
+
+                    <a href="{% url 'crop_recommendation' %}" class="btn-card">
+                        सलाह लें <i class="bi bi-arrow-right"></i>
+                    </a>
+                </div>
+            </div>
+
+            <!-- 2. Crop Information -->
+            <div class="col-md-6 col-lg-3">
+                <div class="dash-card">
+                    <div>
+                        <div class="card-icon">
+                            <i class="bi bi-book"></i>
+                        </div>
+
+                        <h4>फसल की जानकारी (Crop Information)</h4>
+
+                        <p>
+                            गेहूं, गन्ना, धान और सरसों जैसी प्रमुख फसलों की खेती की पूरी जानकारी देखें।
+                        </p>
+                    </div>
+
+                    <a href="{% url 'crop_info' %}" class="btn-card">
+                        जानकारी देखें <i class="bi bi-arrow-right"></i>
+                    </a>
+                </div>
+            </div>
+
+            <!-- 3. Prediction History -->
+            <div class="col-md-6 col-lg-3">
+                <div class="dash-card">
+                    <div>
+                        <div class="card-icon">
+                            <i class="bi bi-clock-history"></i>
+                        </div>
+
+                        <h4>पिछला इतिहास (Prediction History)</h4>
+
+                        <p>
+                            अपने खेत की मिट्टी के पिछले टेस्ट और AI द्वारा सुझाए गए रिजल्ट्स देखें।
+                        </p>
+                    </div>
+
+                    <a href="{% url 'prediction_history' %}" class="btn-card">
+                        इतिहास देखें <i class="bi bi-arrow-right"></i>
+                    </a>
+                </div>
+            </div>
+
+            <!-- 4. About & Help -->
+            <div class="col-md-6 col-lg-3">
+                <div class="dash-card">
+                    <div>
+                        <div class="card-icon">
+                            <i class="bi bi-headset"></i>
+                        </div>
+
+                        <h4>मदद और सहायता (Help & Support)</h4>
+
+                        <p>
+                            किसान कॉल सेंटर टोल-फ्री नंबर और ऐप का उपयोग करने की सहायता लें।
+                        </p>
+                    </div>
+
+                    <a href="{% url 'about_help' %}" class="btn-card">
+                        सहायता लें <i class="bi bi-arrow-right"></i>
+                    </a>
+                </div>
+            </div>
+
+        </div>
+
+    </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+    <div class="container">
+        © <span id="year"></span> Crop Recommendation System | Designed for U.P. Farmers 🌱
+    </div>
+</footer>
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+
+<script>
+    document.getElementById("year").textContent = new Date().getFullYear();
+</script>
+
+</body>
+</html>

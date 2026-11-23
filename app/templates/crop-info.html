@@ -1,0 +1,192 @@
+
+{% extends 'base.html' %}
+
+{% block content %}
+<style>
+    .crop-info-card {
+        height: 100%;
+        background: rgba(255,255,255,.96);
+        border: 1px solid #e0efdf;
+        border-radius: 18px;
+        padding: 24px;
+        box-shadow: 0 10px 25px rgba(26,77,36,.10);
+        transition: transform .25s, box-shadow .25s;
+    }
+    .crop-info-card:hover {
+        transform: translateY(-5px);
+        box-shadow: 0 16px 32px rgba(26,77,36,.16);
+    }
+    .crop-icon {
+        width: 55px;
+        height: 55px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        background: #eaf6e9;
+        color: #18783a;
+        border-radius: 15px;
+        font-size: 28px;
+        margin-bottom: 15px;
+    }
+    .crop-info-card h5 { color: #18783a; font-weight: 700; }
+    .crop-info-card p { font-size: 13px; color: #526458; margin-bottom: 8px; }
+    .crop-info-card strong { color: #263c2e; }
+    .info-heading { color: #18783a; font-weight: 800; }
+    @media(max-width:576px) {
+        .info-wrapper { padding: 22px 15px !important; }
+    }
+</style>
+
+<main class="up-village-scene">
+    <div class="sun"></div>
+    <div class="cloud cloud-one"></div>
+    <div class="cloud cloud-two"></div>
+    <div class="hill hill-left"></div>
+    <div class="hill hill-right"></div>
+    <div class="hut"><div class="door"></div></div>
+    <div class="tree"></div>
+    <div class="field"></div>
+
+    <div class="container info-wrapper py-4 position-relative" style="z-index:2;">
+        <div class="app-card mx-auto" style="max-width:1100px;">
+
+            <div class="text-center mb-4">
+                <span class="badge rounded-pill text-bg-success px-3 py-2 mb-3">
+                    <i class="bi bi-flower1"></i> Agriculture Knowledge
+                </span>
+                <h2 class="info-heading">🌾 Crop Information Center</h2>
+                <p class="text-muted mb-0">
+                    प्रमुख फसलों, उनकी मिट्टी और जलवायु की जानकारी
+                </p>
+            </div>
+
+            <div class="row g-3">
+
+                <div class="col-12 col-md-6 col-lg-4">
+                    <div class="crop-info-card">
+                        <div class="crop-icon">🌾</div>
+                        <h5>Rice (धान)</h5>
+                        <p><strong>Soil:</strong> Clayey and loamy soil</p>
+                        <p><strong>Temperature:</strong> 20–35°C</p>
+                        <p><strong>Rainfall:</strong> High rainfall, generally 1000–2000 mm</p>
+                        <p><strong>Season:</strong> Kharif</p>
+                        <p class="mb-0">Rice is a major food crop that generally requires plenty of water.</p>
+                    </div>
+                </div>
+
+                <div class="col-12 col-md-6 col-lg-4">
+                    <div class="crop-info-card">
+                        <div class="crop-icon">🌽</div>
+                        <h5>Maize (मक्का)</h5>
+                        <p><strong>Soil:</strong> Well-drained loamy soil</p>
+                        <p><strong>Temperature:</strong> 18–32°C</p>
+                        <p><strong>Rainfall:</strong> Moderate rainfall</p>
+                        <p><strong>Season:</strong> Mainly Kharif</p>
+                        <p class="mb-0">Maize is used as food, animal feed and for industrial purposes.</p>
+                    </div>
+                </div>
+
+                <div class="col-12 col-md-6 col-lg-4">
+                    <div class="crop-info-card">
+                        <div class="crop-icon">🌿</div>
+                        <h5>Jute (जूट)</h5>
+                        <p><strong>Soil:</strong> Fertile alluvial soil</p>
+                        <p><strong>Temperature:</strong> 24–35°C</p>
+                        <p><strong>Rainfall:</strong> High rainfall, generally 1500–2500 mm</p>
+                        <p><strong>Season:</strong> Kharif</p>
+                        <p class="mb-0">Jute is a natural fibre crop used for making bags, ropes and textiles.</p>
+                    </div>
+                </div>
+
+                <div class="col-12 col-md-6 col-lg-4">
+                    <div class="crop-info-card">
+                        <div class="crop-icon">🌻</div>
+                        <h5>Cotton (कपास)</h5>
+                        <p><strong>Soil:</strong> Deep black and well-drained soil</p>
+                        <p><strong>Temperature:</strong> 21–30°C</p>
+                        <p><strong>Rainfall:</strong> Moderate rainfall</p>
+                        <p><strong>Season:</strong> Kharif</p>
+                        <p class="mb-0">Cotton is an important commercial fibre crop.</p>
+                    </div>
+                </div>
+
+                <div class="col-12 col-md-6 col-lg-4">
+                    <div class="crop-info-card">
+                        <div class="crop-icon">🍬</div>
+                        <h5>Sugarcane (गन्ना)</h5>
+                        <p><strong>Soil:</strong> Fertile loamy soil</p>
+                        <p><strong>Temperature:</strong> 20–35°C</p>
+                        <p><strong>Rainfall:</strong> Around 750–1500 mm</p>
+                        <p><strong>Season:</strong> Long-duration crop</p>
+                        <p class="mb-0">Sugarcane is a major commercial crop used for producing sugar and jaggery.</p>
+                    </div>
+                </div>
+
+                <div class="col-12 col-md-6 col-lg-4">
+                    <div class="crop-info-card">
+                        <div class="crop-icon">🌱</div>
+                        <h5>Chickpea (चना)</h5>
+                        <p><strong>Soil:</strong> Well-drained loamy soil</p>
+                        <p><strong>Temperature:</strong> 10–30°C</p>
+                        <p><strong>Rainfall:</strong> Low to moderate rainfall</p>
+                        <p><strong>Season:</strong> Rabi</p>
+                        <p class="mb-0">Chickpea is a pulse crop and an important source of plant protein.</p>
+                    </div>
+                </div>
+
+                <div class="col-12 col-md-6 col-lg-4">
+                    <div class="crop-info-card">
+                        <div class="crop-icon">🌼</div>
+                        <h5>Mustard (सरसों)</h5>
+                        <p><strong>Soil:</strong> Loamy and well-drained soil</p>
+                        <p><strong>Temperature:</strong> 10–25°C</p>
+                        <p><strong>Rainfall:</strong> Low to moderate rainfall</p>
+                        <p><strong>Season:</strong> Rabi</p>
+                        <p class="mb-0">Mustard is an oilseed crop used for edible oil production.</p>
+                    </div>
+                </div>
+
+                <div class="col-12 col-md-6 col-lg-4">
+                    <div class="crop-info-card">
+                        <div class="crop-icon">🥔</div>
+                        <h5>Kidney Beans (राजमा)</h5>
+                        <p><strong>Soil:</strong> Well-drained loamy soil</p>
+                        <p><strong>Temperature:</strong> 15–25°C</p>
+                        <p><strong>Rainfall:</strong> Moderate rainfall</p>
+                        <p><strong>Season:</strong> Varies by region</p>
+                        <p class="mb-0">Kidney beans are a protein-rich pulse crop.</p>
+                    </div>
+                </div>
+
+                <div class="col-12 col-md-6 col-lg-4">
+                    <div class="crop-info-card">
+                        <div class="crop-icon">🍎</div>
+                        <h5>Apple (सेब)</h5>
+                        <p><strong>Soil:</strong> Well-drained loamy soil</p>
+                        <p><strong>Temperature:</strong> Cool temperate climate</p>
+                        <p><strong>Rainfall:</strong> Region-dependent</p>
+                        <p><strong>Season:</strong> Perennial fruit crop</p>
+                        <p class="mb-0">Apple is a temperate fruit crop that needs suitable winter chilling conditions.</p>
+                    </div>
+                </div>
+
+            </div>
+
+            <div class="alert alert-success mt-4 mb-0">
+                <i class="bi bi-info-circle-fill me-2"></i>
+                <strong>Note:</strong> Ye general crop-growing information hai. Actual suitability local soil testing, weather, irrigation aur farming practices par depend karti hai.
+            </div>
+
+            <div class="d-flex flex-wrap justify-content-center gap-2 mt-4">
+                <a href="{% url 'crop_recommendation' %}" class="btn btn-success px-4">
+                    <i class="bi bi-magic"></i> Predict My Crop
+                </a>
+                <a href="{% url 'dashboard' %}" class="btn btn-outline-success px-4">
+                    <i class="bi bi-house"></i> Dashboard
+                </a>
+            </div>
+
+        </div>
+    </div>
+</main>
+{% endblock %}

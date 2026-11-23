@@ -1,0 +1,257 @@
+
+{% extends 'base.html' %}
+
+{% block content %}
+<style>
+    .help-card {
+        height: 100%;
+        background: rgba(255,255,255,.97);
+        border: 1px solid #e0efdf;
+        border-radius: 18px;
+        padding: 24px;
+        box-shadow: 0 10px 25px rgba(26,77,36,.09);
+        transition: .25s;
+    }
+    .help-card:hover {
+        transform: translateY(-4px);
+        box-shadow: 0 15px 30px rgba(26,77,36,.15);
+    }
+    .help-icon {
+        width: 52px;
+        height: 52px;
+        border-radius: 14px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        background: #eaf6e9;
+        color: #18783a;
+        font-size: 25px;
+        margin-bottom: 15px;
+    }
+    .help-heading { color: #18783a; font-weight: 800; }
+    .help-card h5 { color: #18783a; font-weight: 700; }
+    .help-card p, .help-card li { color: #526458; font-size: 14px; }
+    .help-card li { margin-bottom: 8px; }
+    .faq-item {
+        background: #f5faf4;
+        border: 1px solid #dcebd9;
+        border-radius: 12px;
+        padding: 16px;
+        margin-bottom: 12px;
+    }
+    .faq-item strong { color: #18783a; }
+    @media(max-width:576px) {
+        .help-wrapper { padding: 20px 12px !important; }
+    }
+</style>
+
+<main class="up-village-scene">
+    <div class="sun"></div>
+    <div class="cloud cloud-one"></div>
+    <div class="cloud cloud-two"></div>
+    <div class="hill hill-left"></div>
+    <div class="hill hill-right"></div>
+    <div class="hut"><div class="door"></div></div>
+    <div class="tree"></div>
+    <div class="field"></div>
+
+    <div class="container help-wrapper py-4 position-relative" style="z-index:2;">
+        <div class="app-card mx-auto" style="max-width:1000px;">
+
+            <div class="text-center mb-4">
+                <span class="badge rounded-pill text-bg-success px-3 py-2 mb-3">
+                    <i class="bi bi-info-circle"></i> About Our Project
+                </span>
+                <h2 class="help-heading">🌾 About & Kisan Help Center</h2>
+                <p class="text-muted">
+                    स्मार्ट खेती की दिशा में एक छोटा कदम
+                </p>
+            </div>
+
+            <!-- ABOUT PROJECT -->
+            <div class="help-card mb-4">
+                <div class="help-icon">
+                    <i class="bi bi-flower1"></i>
+                </div>
+                <h5>About Crop Recommendation System</h5>
+                <p>
+                    Crop Recommendation System एक Machine Learning आधारित
+                    वेब एप्लिकेशन है जो मिट्टी और मौसम से संबंधित जानकारी के
+                    आधार पर किसानों को उपयुक्त फसल का सुझाव देने में मदद करता है।
+                </p>
+                <p class="mb-0">
+                    इसका उद्देश्य किसानों को उपलब्ध soil parameters और
+                    environmental conditions के आधार पर बेहतर crop selection
+                    में सहायता देना है।
+                </p>
+            </div>
+
+            <!-- FEATURES -->
+            <h4 class="help-heading mb-3">Our Main Features</h4>
+            <div class="row g-3 mb-4">
+
+                <div class="col-12 col-md-6 col-lg-4">
+                    <div class="help-card">
+                        <div class="help-icon"><i class="bi bi-cpu"></i></div>
+                        <h5>Machine Learning</h5>
+                        <p class="mb-0">
+                            Five ML algorithms are available for crop prediction:
+                            Random Forest, Decision Tree, Naive Bayes, SVM and KNN.
+                        </p>
+                    </div>
+                </div>
+
+                <div class="col-12 col-md-6 col-lg-4">
+                    <div class="help-card">
+                        <div class="help-icon"><i class="bi bi-clipboard-data"></i></div>
+                        <h5>Soil Analysis</h5>
+                        <p class="mb-0">
+                            Enter Nitrogen, Phosphorus, Potassium and pH values
+                            to get a crop recommendation.
+                        </p>
+                    </div>
+                </div>
+
+                <div class="col-12 col-md-6 col-lg-4">
+                    <div class="help-card">
+                        <div class="help-icon"><i class="bi bi-cloud-sun"></i></div>
+                        <h5>Weather Parameters</h5>
+                        <p class="mb-0">
+                            Temperature, humidity and rainfall are also considered
+                            by the prediction system.
+                        </p>
+                    </div>
+                </div>
+
+                <div class="col-12 col-md-6 col-lg-4">
+                    <div class="help-card">
+                        <div class="help-icon"><i class="bi bi-clock-history"></i></div>
+                        <h5>Prediction History</h5>
+                        <p class="mb-0">
+                            Previous crop predictions can be stored and viewed
+                            through the history section.
+                        </p>
+                    </div>
+                </div>
+
+                <div class="col-12 col-md-6 col-lg-4">
+                    <div class="help-card">
+                        <div class="help-icon"><i class="bi bi-book"></i></div>
+                        <h5>Crop Information</h5>
+                        <p class="mb-0">
+                            Learn about different crops, their growing seasons,
+                            soil requirements and climate conditions.
+                        </p>
+                    </div>
+                </div>
+
+                <div class="col-12 col-md-6 col-lg-4">
+                    <div class="help-card">
+                        <div class="help-icon"><i class="bi bi-person-check"></i></div>
+                        <h5>User Accounts</h5>
+                        <p class="mb-0">
+                            Register and log in to access the dashboard
+                            and use the crop recommendation features.
+                        </p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- HOW TO USE -->
+            <h4 class="help-heading mb-3">How to Use the System</h4>
+            <div class="help-card mb-4">
+                <ol class="mb-0">
+                    <li>Register a new account or log in.</li>
+                    <li>Open the Crop Recommendation section.</li>
+                    <li>Enter your soil N, P, K and pH values.</li>
+                    <li>Enter temperature, humidity and rainfall values.</li>
+                    <li>Select your preferred Machine Learning algorithm.</li>
+                    <li>Click the prediction button to get the recommended crop.</li>
+                    <li>Visit Prediction History to view saved results.</li>
+                </ol>
+            </div>
+
+            <!-- FAQ -->
+            <h4 class="help-heading mb-3">
+                <i class="bi bi-question-circle"></i> Frequently Asked Questions
+            </h4>
+
+            <div class="faq-item">
+                <strong>Q1. What is a crop recommendation system?</strong>
+                <p class="mb-0 mt-2">
+                    It is a system that uses soil and weather parameters
+                    to suggest a suitable crop using Machine Learning.
+                </p>
+            </div>
+
+            <div class="faq-item">
+                <strong>Q2. Which parameters are required?</strong>
+                <p class="mb-0 mt-2">
+                    Nitrogen, Phosphorus, Potassium, temperature,
+                    humidity, pH and rainfall.
+                </p>
+            </div>
+
+            <div class="faq-item">
+                <strong>Q3. Which algorithms are available?</strong>
+                <p class="mb-0 mt-2">
+                    Random Forest, Decision Tree, Naive Bayes, SVM and KNN.
+                </p>
+            </div>
+
+            <div class="faq-item">
+                <strong>Q4. Can I see my previous predictions?</strong>
+                <p class="mb-0 mt-2">
+                    Yes. Open the Prediction History section to view
+                    your saved prediction records.
+                </p>
+            </div>
+
+            <div class="faq-item">
+                <strong>Q5. Is the prediction guaranteed to be accurate?</strong>
+                <p class="mb-0 mt-2">
+                    No. Predictions are model-based suggestions.
+                    Actual crop suitability also depends on local conditions,
+                    soil testing, irrigation and farming practices.
+                </p>
+            </div>
+
+            <!-- FARMER HELP -->
+            <div class="help-card mt-4">
+                <div class="help-icon">
+                    <i class="bi bi-headset"></i>
+                </div>
+                <h5>Kisan Help & Support</h5>
+                <p>
+                    यदि आपको खेती से संबंधित वास्तविक सहायता चाहिए,
+                    तो अपने नजदीकी कृषि विज्ञान केंद्र (KVK) या
+                    जिला कृषि कार्यालय से संपर्क करें।
+                </p>
+                <p>
+                    कृषि संबंधी सरकारी जानकारी और सेवाओं के लिए
+                    आधिकारिक किसान पोर्टल देखें:
+                </p>
+                <a href="https://farmer.gov.in/" target="_blank" rel="noopener noreferrer"
+                   class="btn btn-outline-success">
+                    <i class="bi bi-box-arrow-up-right"></i>
+                    Visit Farmer Portal
+                </a>
+            </div>
+
+            <!-- NAVIGATION -->
+            <div class="d-flex flex-wrap justify-content-center gap-2 mt-4">
+                <a href="{% url 'crop_recommendation' %}" class="btn btn-success px-4">
+                    <i class="bi bi-magic"></i> Predict Crop
+                </a>
+                <a href="{% url 'crop_info' %}" class="btn btn-outline-success px-4">
+                    <i class="bi bi-book"></i> Crop Information
+                </a>
+                <a href="{% url 'dashboard' %}" class="btn btn-outline-success px-4">
+                    <i class="bi bi-house"></i> Dashboard
+                </a>
+            </div>
+
+        </div>
+    </div>
+</main>
+{% endblock %}

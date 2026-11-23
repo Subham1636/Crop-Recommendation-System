@@ -1,0 +1,16 @@
+{% extends 'base.html' %}
+{% block content %}
+<main class="up-village-scene">
+    <div class="sun"></div><div class="cloud cloud-one"></div><div class="cloud cloud-two"></div>
+    <div class="hill hill-left"></div><div class="hill hill-right"></div>
+    <div class="hut"><div class="door"></div></div><div class="tree"></div><div class="field"></div>
+    <div class="app-card text-center">
+        <h1 class="text-success fw-bold">Grow Smarter. Choose the Right Crop.</h1>
+        <p class="lead">उत्तर प्रदेश के किसानों के लिए AI / Machine Learning आधारित फसल सलाह पोर्टल</p>
+        <div class="d-flex justify-content-center gap-3 mt-4">
+            <a href="{% url 'crop_recommendation' %}" class="btn btn-success btn-lg">फसल जांचें (Predict Crop)</a>
+            <a href="{% url 'dashboard' %}" class="btn btn-outline-success btn-lg">किसान डैशबोर्ड</a>
+        </div>
+    </div>
+</main>
+{% endblock %}
