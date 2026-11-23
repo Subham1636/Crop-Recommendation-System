@@ -1,5 +1,10 @@
 # 🌱 Crop Recommendation System
 
+
+## 🌐 Live Demo
+
+**Live Website:** https://crop-recommendation-system-9qsp.onrender
+
 A Machine Learning-based Crop Recommendation System built using Python, Django, and Scikit-learn. The application helps users identify suitable crops based on soil nutrients and environmental conditions.
 
 ## 📌 Project Overview
